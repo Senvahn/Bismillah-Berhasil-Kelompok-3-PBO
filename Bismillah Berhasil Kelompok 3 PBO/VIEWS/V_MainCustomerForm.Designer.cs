@@ -16,44 +16,75 @@
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblWelcome = new System.Windows.Forms.Label();
-            this.btnLihatProduk = new System.Windows.Forms.Button();
-            this.btnLihatTransaksi = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
-
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "V_MainCustomerForm";
-            this.Text = "Customer - Suwar-Suwir";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-
-            this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Location = new System.Drawing.Point(60, 40);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(300, 20);
-
-            this.btnLihatProduk.Location = new System.Drawing.Point(60, 120);
-            this.btnLihatProduk.Name = "btnLihatProduk";
-            this.btnLihatProduk.Size = new System.Drawing.Size(220, 60);
-            this.btnLihatProduk.Text = "Lihat Produk";
-            this.btnLihatProduk.Click += new System.EventHandler(this.btnLihatProduk_Click);
-
-            this.btnLihatTransaksi.Location = new System.Drawing.Point(60, 200);
-            this.btnLihatTransaksi.Name = "btnLihatTransaksi";
-            this.btnLihatTransaksi.Size = new System.Drawing.Size(220, 60);
-            this.btnLihatTransaksi.Text = "Riwayat Transaksi";
-            this.btnLihatTransaksi.Click += new System.EventHandler(this.btnLihatTransaksi_Click);
-
-            this.btnLogout.Location = new System.Drawing.Point(60, 280);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(120, 45);
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-
-            this.Controls.Add(this.lblWelcome);
-            this.Controls.Add(this.btnLihatProduk);
-            this.Controls.Add(this.btnLihatTransaksi);
-            this.Controls.Add(this.btnLogout);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_MainCustomerForm));
+            lblWelcome = new Label();
+            btnLihatProduk = new Button();
+            btnLihatTransaksi = new Button();
+            btnLogout = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Location = new Point(60, 40);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(0, 20);
+            lblWelcome.TabIndex = 0;
+            // 
+            // btnLihatProduk
+            // 
+            btnLihatProduk.Location = new Point(547, 561);
+            btnLihatProduk.Name = "btnLihatProduk";
+            btnLihatProduk.Size = new Size(220, 60);
+            btnLihatProduk.TabIndex = 1;
+            btnLihatProduk.Text = "Lihat Produk";
+            btnLihatProduk.Click += btnLihatProduk_Click;
+            // 
+            // btnLihatTransaksi
+            // 
+            btnLihatTransaksi.Location = new Point(1147, 561);
+            btnLihatTransaksi.Name = "btnLihatTransaksi";
+            btnLihatTransaksi.Size = new Size(220, 60);
+            btnLihatTransaksi.TabIndex = 2;
+            btnLihatTransaksi.Text = "Riwayat Transaksi";
+            btnLihatTransaksi.Click += btnLihatTransaksi_Click;
+            // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(1788, 12);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(120, 45);
+            btnLogout.TabIndex = 3;
+            btnLogout.Text = "Logout";
+            btnLogout.Click += btnLogout_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, -1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1920, 1080);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
+            // V_MainCustomerForm
+            // 
+            ClientSize = new Size(1902, 1033);
+            Controls.Add(lblWelcome);
+            Controls.Add(btnLihatProduk);
+            Controls.Add(btnLihatTransaksi);
+            Controls.Add(btnLogout);
+            Controls.Add(pictureBox1);
+            Name = "V_MainCustomerForm";
+            Text = "Customer - Suwar-Suwir";
+            Load += V_MainCustomerForm_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+        private PictureBox pictureBox1;
     }
 }

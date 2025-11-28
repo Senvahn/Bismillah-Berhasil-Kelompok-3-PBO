@@ -54,7 +54,6 @@ namespace SuwarSuwirApp.Controllers
                 produk.Kategori = produkData.Kategori;
                 produk.Harga = produkData.Harga;
                 produk.Stok = produkData.Stok;
-                produk.GambarPath = produkData.GambarPath;
                 produk.TanggalDiubah = DateTime.UtcNow;
 
                 db.SaveChanges();

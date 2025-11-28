@@ -16,6 +16,11 @@ namespace SuwarSuwirApp.Views
             userController.SetView(this);
         }
 
+        public V_LoginForm(C_UserController userController)
+        {
+            this.userController = userController;
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // Ambil input dari kontrol
@@ -58,6 +63,21 @@ namespace SuwarSuwirApp.Views
         public void ShowLoginError(string message)
         {
             MessageBox.Show(message, "Login Gagal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

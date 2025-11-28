@@ -26,9 +26,6 @@ namespace SuwarSuwirApp.Models
         [Column("stok")]
         public int Stok { get; set; }
 
-        [Column("gambar_path")]
-        public string GambarPath { get; set; }
-
         [Column("tanggal_dibuat")]
         public DateTime TanggalDibuat { get; set; }
 

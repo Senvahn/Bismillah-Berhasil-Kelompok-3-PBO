@@ -37,5 +37,18 @@ namespace SuwarSuwirApp.Views
             MessageBox.Show("Registrasi berhasil. Silakan login.", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var reg = new V_LoginForm(userController);
+            this.Hide();
+            reg.Owner = this;
+            this.Close();
+        }
+
+        private void txtNama_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -3,13 +3,6 @@
     partial class V_RegisterForm
     {
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblNama;
-        private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblNoHp;
-        private System.Windows.Forms.Label lblAlamat;
         private System.Windows.Forms.TextBox txtNama;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
@@ -26,69 +19,125 @@
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lblNama = new System.Windows.Forms.Label();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblNoHp = new System.Windows.Forms.Label();
-            this.lblAlamat = new System.Windows.Forms.Label();
-            this.txtNama = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtNoHp = new System.Windows.Forms.TextBox();
-            this.txtAlamat = new System.Windows.Forms.TextBox();
-            this.btnDaftar = new System.Windows.Forms.Button();
-
-            // Form
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "V_RegisterForm";
-            this.Text = "Register - Sistem Suwar-Suwir";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-
-            // lblTitle
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(840, 80);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(260, 20);
-            this.lblTitle.Text = "Form Register Customer Suwar-Suwir";
-
-            // Labels & Textboxes layout
-            this.lblNama.AutoSize = true; this.lblNama.Location = new System.Drawing.Point(620, 180); this.lblNama.Text = "Nama Lengkap";
-            this.txtNama.Location = new System.Drawing.Point(760, 175); this.txtNama.Size = new System.Drawing.Size(400, 26);
-
-            this.lblUsername.AutoSize = true; this.lblUsername.Location = new System.Drawing.Point(620, 220); this.lblUsername.Text = "Username";
-            this.txtUsername.Location = new System.Drawing.Point(760, 215); this.txtUsername.Size = new System.Drawing.Size(400, 26);
-
-            this.lblPassword.AutoSize = true; this.lblPassword.Location = new System.Drawing.Point(620, 260); this.lblPassword.Text = "Password";
-            this.txtPassword.Location = new System.Drawing.Point(760, 255); this.txtPassword.Size = new System.Drawing.Size(400, 26); this.txtPassword.UseSystemPasswordChar = true;
-
-            this.lblEmail.AutoSize = true; this.lblEmail.Location = new System.Drawing.Point(620, 300); this.lblEmail.Text = "Email";
-            this.txtEmail.Location = new System.Drawing.Point(760, 295); this.txtEmail.Size = new System.Drawing.Size(400, 26);
-
-            this.lblNoHp.AutoSize = true; this.lblNoHp.Location = new System.Drawing.Point(620, 340); this.lblNoHp.Text = "No. HP";
-            this.txtNoHp.Location = new System.Drawing.Point(760, 335); this.txtNoHp.Size = new System.Drawing.Size(400, 26);
-
-            this.lblAlamat.AutoSize = true; this.lblAlamat.Location = new System.Drawing.Point(620, 380); this.lblAlamat.Text = "Alamat";
-            this.txtAlamat.Location = new System.Drawing.Point(760, 375); this.txtAlamat.Size = new System.Drawing.Size(400, 80); this.txtAlamat.Multiline = true;
-
-            this.btnDaftar.Location = new System.Drawing.Point(760, 480);
-            this.btnDaftar.Name = "btnDaftar";
-            this.btnDaftar.Size = new System.Drawing.Size(150, 40);
-            this.btnDaftar.Text = "Daftar";
-            this.btnDaftar.Click += new System.EventHandler(this.btnDaftar_Click);
-
-            this.Controls.AddRange(new System.Windows.Forms.Control[] {
-                this.lblTitle, this.lblNama, this.txtNama,
-                this.lblUsername, this.txtUsername,
-                this.lblPassword, this.txtPassword,
-                this.lblEmail, this.txtEmail,
-                this.lblNoHp, this.txtNoHp,
-                this.lblAlamat, this.txtAlamat,
-                this.btnDaftar
-            });
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_RegisterForm));
+            txtNama = new TextBox();
+            txtUsername = new TextBox();
+            txtPassword = new TextBox();
+            txtEmail = new TextBox();
+            txtNoHp = new TextBox();
+            txtAlamat = new TextBox();
+            btnDaftar = new Button();
+            button1 = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // txtNama
+            // 
+            txtNama.Font = new Font("Cambria", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNama.Location = new Point(462, 447);
+            txtNama.Multiline = true;
+            txtNama.Name = "txtNama";
+            txtNama.Size = new Size(447, 62);
+            txtNama.TabIndex = 2;
+            txtNama.TextChanged += txtNama_TextChanged;
+            // 
+            // txtUsername
+            // 
+            txtUsername.Font = new Font("Cambria", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtUsername.Location = new Point(462, 560);
+            txtUsername.Multiline = true;
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(447, 64);
+            txtUsername.TabIndex = 4;
+            // 
+            // txtPassword
+            // 
+            txtPassword.Font = new Font("Cambria", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPassword.Location = new Point(462, 674);
+            txtPassword.Multiline = true;
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(447, 63);
+            txtPassword.TabIndex = 6;
+            txtPassword.UseSystemPasswordChar = true;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Font = new Font("Cambria", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmail.Location = new Point(1012, 447);
+            txtEmail.Multiline = true;
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(445, 62);
+            txtEmail.TabIndex = 8;
+            // 
+            // txtNoHp
+            // 
+            txtNoHp.Font = new Font("Cambria", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNoHp.Location = new Point(1012, 560);
+            txtNoHp.Multiline = true;
+            txtNoHp.Name = "txtNoHp";
+            txtNoHp.Size = new Size(445, 64);
+            txtNoHp.TabIndex = 10;
+            // 
+            // txtAlamat
+            // 
+            txtAlamat.Font = new Font("Cambria", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtAlamat.Location = new Point(1012, 674);
+            txtAlamat.Multiline = true;
+            txtAlamat.Name = "txtAlamat";
+            txtAlamat.Size = new Size(445, 63);
+            txtAlamat.TabIndex = 12;
+            // 
+            // btnDaftar
+            // 
+            btnDaftar.Font = new Font("Cambria", 14F);
+            btnDaftar.Location = new Point(897, 780);
+            btnDaftar.Name = "btnDaftar";
+            btnDaftar.Size = new Size(128, 40);
+            btnDaftar.TabIndex = 13;
+            btnDaftar.Text = "Daftar";
+            btnDaftar.Click += btnDaftar_Click;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Cambria", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(897, 846);
+            button1.Name = "button1";
+            button1.Size = new Size(128, 42);
+            button1.TabIndex = 14;
+            button1.Text = "Kembali";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(1, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1920, 1080);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 15;
+            pictureBox1.TabStop = false;
+            // 
+            // V_RegisterForm
+            // 
+            ClientSize = new Size(1902, 1033);
+            Controls.Add(button1);
+            Controls.Add(txtNama);
+            Controls.Add(txtUsername);
+            Controls.Add(txtPassword);
+            Controls.Add(txtEmail);
+            Controls.Add(txtNoHp);
+            Controls.Add(txtAlamat);
+            Controls.Add(btnDaftar);
+            Controls.Add(pictureBox1);
+            Name = "V_RegisterForm";
+            Text = "Register - Sistem Suwar-Suwir";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+        private Button button1;
+        private PictureBox pictureBox1;
     }
 }

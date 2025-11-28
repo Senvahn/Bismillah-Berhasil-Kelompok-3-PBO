@@ -20,7 +20,7 @@ namespace SuwarSuwirApp.Views
             this.produkController = new C_ProdukController(userController.dbFactory);
             this.isAdmin = isAdmin;
             this.currentUser = user;
-            SetupRoleUI();
+            SetupRoleUI();  
             LoadProduk();
         }
 
@@ -30,15 +30,23 @@ namespace SuwarSuwirApp.Views
             btnEdit.Visible = isAdmin;
             btnHapus.Visible = isAdmin;
             btnAturStok.Visible = isAdmin;
-            btnBeli.Visible = !isAdmin;
+            btnBeli.Visible = currentUser != null;
+
+
         }
 
         private void LoadProduk()
         {
             var res = produkController.ShowProdukList();
-            if (!res.Success) { MessageBox.Show(res.Message); return; }
+            if (!res.Success)
+            {
+                MessageBox.Show(res.Message);
+                return;
+            }
+
             dgvProduk.DataSource = res.Data;
         }
+
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
@@ -77,16 +85,28 @@ namespace SuwarSuwirApp.Views
         private void btnBeli_Click(object sender, EventArgs e)
         {
             if (dgvProduk.CurrentRow == null) return;
-            if (currentUser == null)
-            {
-                MessageBox.Show("Silakan login sebagai customer untuk membeli.");
-                return;
-            }
+
             var produk = (M_Produk)dgvProduk.CurrentRow.DataBoundItem;
-            // buka form transaksi dengan produk yang dipilih
+
+            // kalau currentUser masih null, berarti beli sebagai guest
             var transaksiForm = new V_TransaksiForm(userController, currentUser, produk);
             transaksiForm.ShowDialog();
+
             LoadProduk();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var reg = new V_ProdukListForm(userController, isAdmin, currentUser);
+            this.Hide();
+            reg.Owner = this;
+            this.Close();
+        }
+
+
+        private void dgvProduk_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

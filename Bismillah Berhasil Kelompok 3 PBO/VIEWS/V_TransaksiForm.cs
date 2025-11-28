@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using SuwarSuwirApp.Controllers;
 using SuwarSuwirApp.Models;
@@ -9,56 +10,200 @@ namespace SuwarSuwirApp.Views
     public partial class V_TransaksiForm : Form
     {
         private C_UserController userController;
+        private C_ProdukController produkController;
         private C_TransaksiController transaksiController;
         private M_User currentUser;
+
+        // data asli produk & keranjang domain
+        private List<M_Produk> daftarProduk = new List<M_Produk>();
         private List<M_DetailTransaksi> keranjang = new List<M_DetailTransaksi>();
 
-        // optional: dapat menerima satu produk untuk langsung tambah ke keranjang
-        public V_TransaksiForm(C_UserController controller, M_User user, M_Produk initialProduk = null)
+        // view model sederhana untuk ditampilkan di dgvKeranjang
+        private List<CartRow> cartView = new List<CartRow>();
+
+        // produk yang sedang dipilih dari dgvProduk (null jika belum pilih)
+        private M_Produk selectedProduk = null;
+
+        public V_TransaksiForm(C_UserController controller, M_User user, M_Produk produk)
         {
             InitializeComponent();
-            userController = controller;
+            userController = controller ?? throw new ArgumentNullException(nameof(controller));
+            produkController = new C_ProdukController(userController.dbFactory);
             transaksiController = new C_TransaksiController(userController.dbFactory);
             currentUser = user;
-            if (initialProduk != null)
+        }
+
+        private void V_TransaksiForm_Load(object sender, EventArgs e)
+        {
+            LoadProduk();
+            BindEmptyKeranjang();
+            UpdateTotalLabel();
+        }
+
+        private void LoadProduk()
+        {
+            var res = produkController.ShowProdukList();
+            if (!res.Success)
             {
-                // tambahkan satu dengan jumlah default 1
-                keranjang.Add(new M_DetailTransaksi { IdProduk = initialProduk.IdProduk, Jumlah = 1, Subtotal = initialProduk.Harga });
-                RefreshKeranjang();
+                MessageBox.Show(res.Message);
+                return;
             }
+
+            daftarProduk = res.Data ?? new List<M_Produk>();
+            dgvProduk.DataSource = null;
+            dgvProduk.DataSource = daftarProduk;
+
+            // tampilkan kolom penting (opsional: sesuaikan nama property modelmu)
+            // contoh: dgvProduk.Columns["IdProduk"].Visible = false; kalau mau sembunyikan id
         }
 
-        private void btnTambahKeKeranjang_Click(object sender, EventArgs e)
+        // Event handler: ketika klik cell di dgvProduk => set selectedProduk
+        private void dgvProduk_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!int.TryParse(txtIdProduk.Text, out int idProduk)) { MessageBox.Show("Id produk tidak valid."); return; }
-            if (!int.TryParse(txtJumlah.Text, out int jumlah)) { MessageBox.Show("Jumlah tidak valid."); return; }
+            if (e.RowIndex < 0) return;
 
-            keranjang.Add(new M_DetailTransaksi { IdProduk = idProduk, Jumlah = jumlah });
-            RefreshKeranjang();
+            var row = dgvProduk.Rows[e.RowIndex];
+            if (row == null) return;
+
+            selectedProduk = row.DataBoundItem as M_Produk;
+            // set numeric updown default 1 ketika produk dipilih
+            if (selectedProduk != null)
+                nudJumlah.Value = 1;
         }
 
-        private void RefreshKeranjang()
+        // Event handler: tombol "Tambah" ditekan
+        private void btnTambah_Click(object sender, EventArgs e)
         {
-            dgvKeranjang.DataSource = null;
-            dgvKeranjang.DataSource = keranjang;
-            var totalRes = transaksiController.HitungTotal(keranjang);
-            if (totalRes.Success)
-                lblTotal.Text = $"Total: {totalRes.Data:C2}";
+            if (selectedProduk == null)
+            {
+                MessageBox.Show("Pilih produk terlebih dahulu dari daftar.");
+                return;
+            }
+
+            int jumlah = (int)nudJumlah.Value;
+            if (jumlah <= 0)
+            {
+                MessageBox.Show("Jumlah harus >= 1.");
+                return;
+            }
+
+            // cari apakah sudah ada di keranjang -> tambahkan jumlah jika ada
+            var existing = keranjang.FirstOrDefault(k => k.IdProduk == selectedProduk.IdProduk);
+            if (existing != null)
+            {
+                existing.Jumlah += jumlah;
+                existing.Subtotal = existing.Jumlah * (selectedProduk?.Harga ?? 0);
+            }
             else
-                lblTotal.Text = "Total: -";
+            {
+                var detail = new M_DetailTransaksi
+                {
+                    IdProduk = selectedProduk.IdProduk,
+                    Jumlah = jumlah,
+                    Subtotal = (selectedProduk?.Harga ?? 0) * jumlah
+                };
+                keranjang.Add(detail);
+            }
+
+            // sinkronisasi cartView untuk tampilan (nama, harga, subtotal)
+            SyncCartView();
+            UpdateTotalLabel();
         }
 
+        // Sync keranjang domain -> cartView (agar dgvKeranjang menunjukkan nama produk, harga, subtotal)
+        private void SyncCartView()
+        {
+            cartView.Clear();
+
+            foreach (var d in keranjang)
+            {
+                var prod = daftarProduk.FirstOrDefault(p => p.IdProduk == d.IdProduk);
+                var nama = prod != null ? prod.NamaProduk : $"ID:{d.IdProduk}";
+                var harga = prod != null ? prod.Harga : (d.Subtotal / Math.Max(1, d.Jumlah));
+                cartView.Add(new CartRow
+                {
+                    IdProduk = d.IdProduk,
+                    NamaProduk = nama,
+                    Harga = harga,
+                    Jumlah = d.Jumlah,
+                    Subtotal = d.Subtotal
+                });
+            }
+
+            dgvKeranjang.DataSource = null;
+            dgvKeranjang.DataSource = cartView;
+        }
+
+        private decimal totalHarga = 0m;
+        private void UpdateTotalLabel()
+        {
+            totalHarga = keranjang.Sum(k => k.Subtotal);
+            lblTotal.Text = $"Total: {totalHarga:C2}";
+        }
+
+        // Bind kosong saat form baru
+        private void BindEmptyKeranjang()
+        {
+            cartView = new List<CartRow>();
+            dgvKeranjang.DataSource = null;
+            dgvKeranjang.DataSource = cartView;
+        }
+
+        // Event handler: Bayar
         private void btnBayar_Click(object sender, EventArgs e)
         {
-            if (keranjang.Count == 0) { MessageBox.Show("Keranjang kosong."); return; }
-            if (string.IsNullOrWhiteSpace(txtMetodePembayaran.Text)) { MessageBox.Show("Masukkan metode pembayaran."); return; }
+            if (keranjang.Count == 0)
+            {
+                MessageBox.Show("Keranjang kosong.");
+                return;
+            }
 
+            if (!decimal.TryParse(txtBayar.Text, out decimal uangBayar))
+            {
+                MessageBox.Show("Input uang bayar tidak valid.");
+                return;
+            }
+
+            UpdateTotalLabel(); // pastikan total terbaru
+            if (uangBayar < totalHarga)
+            {
+                MessageBox.Show("Uang tidak cukup.");
+                return;
+            }
+
+            // buat pemesanan
             var pemesanan = transaksiController.BuatPemesanan(currentUser.IdUser, keranjang);
-            if (!pemesanan.Success) { MessageBox.Show(pemesanan.Message); return; }
+            if (!pemesanan.Success)
+            {
+                MessageBox.Show(pemesanan.Message);
+                return;
+            }
 
-            var bayarRes = transaksiController.Bayar(pemesanan.Data.IdTransaksi, txtMetodePembayaran.Text.Trim());
-            MessageBox.Show(bayarRes.Message);
-            if (bayarRes.Success) { this.Close(); }
+            var bayarRes = transaksiController.Bayar(pemesanan.Data.IdTransaksi, "Cash");
+            if (!bayarRes.Success)
+            {
+                MessageBox.Show(bayarRes.Message);
+                return;
+            }
+
+            decimal kembalian = uangBayar - totalHarga;
+            MessageBox.Show($"Pembayaran berhasil.\nKembalian: {kembalian:C2}");
+
+            // bersihkan dan tutup
+            keranjang.Clear();
+            SyncCartView();
+            UpdateTotalLabel();
+            this.Close();
+        }
+
+        // small view model for DataGridView keranjang
+        private class CartRow
+        {
+            public int IdProduk { get; set; }
+            public string NamaProduk { get; set; }
+            public decimal Harga { get; set; }
+            public int Jumlah { get; set; }
+            public decimal Subtotal { get; set; }
         }
     }
 }

@@ -15,13 +15,13 @@ namespace SuwarSuwirApp.Views
             InitializeComponent();
             userController = controller;
             currentUser = user;
-            lblWelcome.Text = $"Selamat datang, {currentUser.NamaLengkap} (Admin)";
         }
 
         private void btnKelolaProduk_Click(object sender, EventArgs e)
         {
-            var prodForm = new V_ProdukListForm(userController);
+            var prodForm = new V_ProdukListForm(userController, true, currentUser);
             prodForm.ShowDialog();
+
         }
 
         private void btnKelolaCustomer_Click(object sender, EventArgs e)
@@ -44,6 +44,16 @@ namespace SuwarSuwirApp.Views
                 userController.Logout();
                 this.Close();
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

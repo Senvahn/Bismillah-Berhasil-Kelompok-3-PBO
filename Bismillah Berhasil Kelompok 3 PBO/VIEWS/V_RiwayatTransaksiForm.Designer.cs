@@ -14,26 +14,39 @@
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.dgvRiwayat = new System.Windows.Forms.DataGridView();
-            this.btnDetail = new System.Windows.Forms.Button();
-
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "V_RiwayatTransaksiForm";
-            this.Text = "Riwayat Transaksi - Suwar-Suwir";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-
-            this.dgvRiwayat.Location = new System.Drawing.Point(200, 100);
-            this.dgvRiwayat.Size = new System.Drawing.Size(1400, 700);
-            this.dgvRiwayat.ReadOnly = true;
-
-            this.btnDetail.Location = new System.Drawing.Point(60, 120);
-            this.btnDetail.Size = new System.Drawing.Size(140, 40);
-            this.btnDetail.Text = "Detail";
-            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
-
-            this.Controls.Add(this.dgvRiwayat);
-            this.Controls.Add(this.btnDetail);
+            dgvRiwayat = new DataGridView();
+            btnDetail = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvRiwayat).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvRiwayat
+            // 
+            dgvRiwayat.ColumnHeadersHeight = 29;
+            dgvRiwayat.Location = new Point(200, 100);
+            dgvRiwayat.Name = "dgvRiwayat";
+            dgvRiwayat.ReadOnly = true;
+            dgvRiwayat.RowHeadersWidth = 51;
+            dgvRiwayat.Size = new Size(1400, 700);
+            dgvRiwayat.TabIndex = 0;
+            // 
+            // btnDetail
+            // 
+            btnDetail.Location = new Point(60, 120);
+            btnDetail.Name = "btnDetail";
+            btnDetail.Size = new Size(140, 40);
+            btnDetail.TabIndex = 1;
+            btnDetail.Text = "Detail";
+            btnDetail.Click += btnDetail_Click;
+            // 
+            // V_RiwayatTransaksiForm
+            // 
+            ClientSize = new Size(1902, 1033);
+            Controls.Add(dgvRiwayat);
+            Controls.Add(btnDetail);
+            Name = "V_RiwayatTransaksiForm";
+            Text = "Riwayat Transaksi - Suwar-Suwir";
+            ((System.ComponentModel.ISupportInitialize)dgvRiwayat).EndInit();
+            ResumeLayout(false);
         }
     }
 }

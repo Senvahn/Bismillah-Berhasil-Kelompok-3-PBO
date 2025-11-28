@@ -28,5 +28,18 @@ namespace SuwarSuwirApp.Views
         {
             LoadCustomers();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var reg = new V_CustomerListForm(userController);
+            this.Hide();
+            reg.Owner = this;
+            this.Close();
+        }
     }
 }

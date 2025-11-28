@@ -25,7 +25,6 @@ namespace SuwarSuwirApp.Views
             txtKategori.Text = editingProduk.Kategori;
             txtHarga.Text = editingProduk.Harga.ToString();
             txtStok.Text = editingProduk.Stok.ToString();
-            txtGambar.Text = editingProduk.GambarPath;
         }
 
         private void btnSimpan_Click(object sender, EventArgs e)
@@ -44,7 +43,6 @@ namespace SuwarSuwirApp.Views
                     Kategori = txtKategori.Text.Trim(),
                     Harga = harga,
                     Stok = stok,
-                    GambarPath = txtGambar.Text.Trim()
                 };
                 var res = produkController.Create(p);
                 MessageBox.Show(res.Message);
@@ -57,7 +55,6 @@ namespace SuwarSuwirApp.Views
                 editingProduk.Kategori = txtKategori.Text.Trim();
                 editingProduk.Harga = harga;
                 editingProduk.Stok = stok;
-                editingProduk.GambarPath = txtGambar.Text.Trim();
                 var res = produkController.Update(editingProduk);
                 MessageBox.Show(res.Message);
                 if (res.Success) this.Close();
@@ -67,6 +64,22 @@ namespace SuwarSuwirApp.Views
         private void btnBatal_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void txtStok_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

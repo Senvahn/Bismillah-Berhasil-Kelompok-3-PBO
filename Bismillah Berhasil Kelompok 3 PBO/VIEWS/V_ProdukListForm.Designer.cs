@@ -18,36 +18,98 @@
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.dgvProduk = new System.Windows.Forms.DataGridView();
-            this.btnTambah = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnHapus = new System.Windows.Forms.Button();
-            this.btnAturStok = new System.Windows.Forms.Button();
-            this.btnBeli = new System.Windows.Forms.Button();
-
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "V_ProdukListForm";
-            this.Text = "Daftar Produk - Suwar-Suwir";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-
-            this.dgvProduk.Location = new System.Drawing.Point(300, 100);
-            this.dgvProduk.Size = new System.Drawing.Size(1200, 700);
-            this.dgvProduk.ReadOnly = true;
-            this.dgvProduk.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-
-            this.btnTambah.Location = new System.Drawing.Point(60, 120); this.btnTambah.Size = new System.Drawing.Size(200, 45); this.btnTambah.Text = "Tambah Produk"; this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
-            this.btnEdit.Location = new System.Drawing.Point(60, 180); this.btnEdit.Size = new System.Drawing.Size(200, 45); this.btnEdit.Text = "Edit Produk"; this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            this.btnHapus.Location = new System.Drawing.Point(60, 240); this.btnHapus.Size = new System.Drawing.Size(200, 45); this.btnHapus.Text = "Hapus Produk"; this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
-            this.btnAturStok.Location = new System.Drawing.Point(60, 300); this.btnAturStok.Size = new System.Drawing.Size(200, 45); this.btnAturStok.Text = "Atur Stok"; this.btnAturStok.Click += new System.EventHandler(this.btnAturStok_Click);
-            this.btnBeli.Location = new System.Drawing.Point(60, 360); this.btnBeli.Size = new System.Drawing.Size(200, 45); this.btnBeli.Text = "Beli"; this.btnBeli.Click += new System.EventHandler(this.btnBeli_Click);
-
-            this.Controls.Add(this.dgvProduk);
-            this.Controls.Add(this.btnTambah);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnHapus);
-            this.Controls.Add(this.btnAturStok);
-            this.Controls.Add(this.btnBeli);
+            dgvProduk = new DataGridView();
+            btnTambah = new Button();
+            btnEdit = new Button();
+            btnHapus = new Button();
+            btnAturStok = new Button();
+            btnBeli = new Button();
+            button1 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvProduk).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvProduk
+            // 
+            dgvProduk.ColumnHeadersHeight = 29;
+            dgvProduk.Location = new Point(300, 100);
+            dgvProduk.Name = "dgvProduk";
+            dgvProduk.ReadOnly = true;
+            dgvProduk.RowHeadersWidth = 51;
+            dgvProduk.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProduk.Size = new Size(1200, 700);
+            dgvProduk.TabIndex = 0;
+            dgvProduk.CellContentClick += dgvProduk_CellContentClick;
+            // 
+            // btnTambah
+            // 
+            btnTambah.Location = new Point(60, 120);
+            btnTambah.Name = "btnTambah";
+            btnTambah.Size = new Size(200, 45);
+            btnTambah.TabIndex = 1;
+            btnTambah.Text = "Tambah Produk";
+            btnTambah.Click += btnTambah_Click;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Location = new Point(60, 180);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(200, 45);
+            btnEdit.TabIndex = 2;
+            btnEdit.Text = "Edit Produk";
+            btnEdit.Click += btnEdit_Click;
+            // 
+            // btnHapus
+            // 
+            btnHapus.Location = new Point(60, 240);
+            btnHapus.Name = "btnHapus";
+            btnHapus.Size = new Size(200, 45);
+            btnHapus.TabIndex = 3;
+            btnHapus.Text = "Hapus Produk";
+            btnHapus.Click += btnHapus_Click;
+            // 
+            // btnAturStok
+            // 
+            btnAturStok.Location = new Point(60, 300);
+            btnAturStok.Name = "btnAturStok";
+            btnAturStok.Size = new Size(200, 45);
+            btnAturStok.TabIndex = 4;
+            btnAturStok.Text = "Atur Stok";
+            btnAturStok.Click += btnAturStok_Click;
+            // 
+            // btnBeli
+            // 
+            btnBeli.Location = new Point(60, 360);
+            btnBeli.Name = "btnBeli";
+            btnBeli.Size = new Size(200, 45);
+            btnBeli.TabIndex = 5;
+            btnBeli.Text = "Beli";
+            btnBeli.Click += btnBeli_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(60, 425);
+            button1.Name = "button1";
+            button1.Size = new Size(200, 43);
+            button1.TabIndex = 6;
+            button1.Text = "Kembali";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // V_ProdukListForm
+            // 
+            ClientSize = new Size(1902, 1033);
+            Controls.Add(button1);
+            Controls.Add(dgvProduk);
+            Controls.Add(btnTambah);
+            Controls.Add(btnEdit);
+            Controls.Add(btnHapus);
+            Controls.Add(btnAturStok);
+            Controls.Add(btnBeli);
+            Name = "V_ProdukListForm";
+            Text = "Daftar Produk - Suwar-Suwir";
+            ((System.ComponentModel.ISupportInitialize)dgvProduk).EndInit();
+            ResumeLayout(false);
         }
+        private Button button1;
     }
 }

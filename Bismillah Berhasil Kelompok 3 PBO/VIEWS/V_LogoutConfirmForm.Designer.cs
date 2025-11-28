@@ -15,23 +15,67 @@
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblQuestion = new System.Windows.Forms.Label();
-            this.btnYes = new System.Windows.Forms.Button();
-            this.btnNo = new System.Windows.Forms.Button();
-
-            this.ClientSize = new System.Drawing.Size(480, 200);
-            this.Name = "V_LogoutConfirmForm";
-            this.Text = "Konfirmasi Logout";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-
-            this.lblQuestion.AutoSize = true; this.lblQuestion.Location = new System.Drawing.Point(40, 30); this.lblQuestion.Text = "Apakah Anda yakin ingin logout?";
-            this.btnYes.Location = new System.Drawing.Point(60, 100); this.btnYes.Size = new System.Drawing.Size(120, 40); this.btnYes.Text = "Yes"; this.btnYes.Click += new System.EventHandler(this.btnYes_Click);
-            this.btnNo.Location = new System.Drawing.Point(200, 100); this.btnNo.Size = new System.Drawing.Size(120, 40); this.btnNo.Text = "No"; this.btnNo.Click += new System.EventHandler(this.btnNo_Click);
-
-            this.Controls.Add(this.lblQuestion);
-            this.Controls.Add(this.btnYes);
-            this.Controls.Add(this.btnNo);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_LogoutConfirmForm));
+            lblQuestion = new Label();
+            btnYes = new Button();
+            btnNo = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // lblQuestion
+            // 
+            lblQuestion.AutoSize = true;
+            lblQuestion.BackColor = Color.FromArgb(0, 0, 0, 0);
+            lblQuestion.Font = new Font("Cambria", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblQuestion.Location = new Point(118, 49);
+            lblQuestion.Name = "lblQuestion";
+            lblQuestion.Size = new Size(245, 20);
+            lblQuestion.TabIndex = 0;
+            lblQuestion.Text = "Apakah Anda yakin ingin logout?";
+            // 
+            // btnYes
+            // 
+            btnYes.Location = new Point(68, 118);
+            btnYes.Name = "btnYes";
+            btnYes.Size = new Size(120, 40);
+            btnYes.TabIndex = 1;
+            btnYes.Text = "Yakin";
+            btnYes.Click += btnYes_Click;
+            // 
+            // btnNo
+            // 
+            btnNo.Location = new Point(286, 118);
+            btnNo.Name = "btnNo";
+            btnNo.Size = new Size(120, 40);
+            btnNo.TabIndex = 2;
+            btnNo.Text = "Tidak";
+            btnNo.Click += btnNo_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-11, -21);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(499, 243);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            // 
+            // V_LogoutConfirmForm
+            // 
+            ClientSize = new Size(481, 196);
+            Controls.Add(lblQuestion);
+            Controls.Add(btnYes);
+            Controls.Add(btnNo);
+            Controls.Add(pictureBox1);
+            Name = "V_LogoutConfirmForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Menu Logout";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+        private PictureBox pictureBox1;
     }
 }

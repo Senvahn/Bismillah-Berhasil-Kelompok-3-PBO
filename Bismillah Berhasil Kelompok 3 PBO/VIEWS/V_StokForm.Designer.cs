@@ -17,30 +17,95 @@
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lblNamaProduk = new System.Windows.Forms.Label();
-            this.txtJumlah = new System.Windows.Forms.TextBox();
-            this.btnTambah = new System.Windows.Forms.Button();
-            this.btnKurang = new System.Windows.Forms.Button();
-
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "V_StokForm";
-            this.Text = "Atur Stok - Suwar-Suwir";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-
-            this.lblTitle.AutoSize = true; this.lblTitle.Location = new System.Drawing.Point(760, 80); this.lblTitle.Text = "Form Atur Stok";
-            this.lblNamaProduk.AutoSize = true; this.lblNamaProduk.Location = new System.Drawing.Point(700, 160); this.lblNamaProduk.Size = new System.Drawing.Size(400, 20);
-
-            this.txtJumlah.Location = new System.Drawing.Point(700, 200); this.txtJumlah.Size = new System.Drawing.Size(200, 26);
-            this.btnTambah.Location = new System.Drawing.Point(700, 250); this.btnTambah.Size = new System.Drawing.Size(120, 40); this.btnTambah.Text = "Tambah"; this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
-            this.btnKurang.Location = new System.Drawing.Point(840, 250); this.btnKurang.Size = new System.Drawing.Size(120, 40); this.btnKurang.Text = "Kurangi"; this.btnKurang.Click += new System.EventHandler(this.btnKurang_Click);
-
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lblNamaProduk);
-            this.Controls.Add(this.txtJumlah);
-            this.Controls.Add(this.btnTambah);
-            this.Controls.Add(this.btnKurang);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_StokForm));
+            lblTitle = new Label();
+            lblNamaProduk = new Label();
+            txtJumlah = new TextBox();
+            btnTambah = new Button();
+            btnKurang = new Button();
+            checkedListBox1 = new CheckedListBox();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Location = new Point(155, 31);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(168, 20);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Silahkan Atur Stok Anda";
+            // 
+            // lblNamaProduk
+            // 
+            lblNamaProduk.AutoSize = true;
+            lblNamaProduk.Location = new Point(700, 160);
+            lblNamaProduk.Name = "lblNamaProduk";
+            lblNamaProduk.Size = new Size(0, 20);
+            lblNamaProduk.TabIndex = 1;
+            // 
+            // txtJumlah
+            // 
+            txtJumlah.Location = new Point(201, 69);
+            txtJumlah.Name = "txtJumlah";
+            txtJumlah.Size = new Size(73, 27);
+            txtJumlah.TabIndex = 2;
+            // 
+            // btnTambah
+            // 
+            btnTambah.Location = new Point(102, 113);
+            btnTambah.Name = "btnTambah";
+            btnTambah.Size = new Size(120, 40);
+            btnTambah.TabIndex = 3;
+            btnTambah.Text = "Tambah";
+            btnTambah.Click += btnTambah_Click;
+            // 
+            // btnKurang
+            // 
+            btnKurang.Location = new Point(258, 113);
+            btnKurang.Name = "btnKurang";
+            btnKurang.Size = new Size(120, 40);
+            btnKurang.TabIndex = 4;
+            btnKurang.Text = "Kurangi";
+            btnKurang.Click += btnKurang_Click;
+            // 
+            // checkedListBox1
+            // 
+            checkedListBox1.FormattingEnabled = true;
+            checkedListBox1.Location = new Point(472, 172);
+            checkedListBox1.Name = "checkedListBox1";
+            checkedListBox1.Size = new Size(8, 4);
+            checkedListBox1.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-9, -21);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(499, 243);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            // 
+            // V_StokForm
+            // 
+            ClientSize = new Size(481, 196);
+            Controls.Add(checkedListBox1);
+            Controls.Add(lblTitle);
+            Controls.Add(lblNamaProduk);
+            Controls.Add(txtJumlah);
+            Controls.Add(btnTambah);
+            Controls.Add(btnKurang);
+            Controls.Add(pictureBox1);
+            Name = "V_StokForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Atur Stok - Suwar-Suwir";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+        private CheckedListBox checkedListBox1;
+        private PictureBox pictureBox1;
     }
 }

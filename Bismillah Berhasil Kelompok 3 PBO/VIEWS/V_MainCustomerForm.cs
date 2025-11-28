@@ -15,7 +15,6 @@ namespace SuwarSuwirApp.Views
             InitializeComponent();
             userController = controller;
             currentUser = user;
-            lblWelcome.Text = $"Selamat datang, {currentUser.NamaLengkap}";
         }
 
         private void btnLihatProduk_Click(object sender, EventArgs e)
@@ -38,6 +37,11 @@ namespace SuwarSuwirApp.Views
                 userController.Logout();
                 this.Close();
             }
+        }
+
+        private void V_MainCustomerForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -3,13 +3,11 @@
     partial class V_ProdukForm
     {
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtNama;
         private System.Windows.Forms.TextBox txtDeskripsi;
         private System.Windows.Forms.TextBox txtKategori;
         private System.Windows.Forms.TextBox txtHarga;
         private System.Windows.Forms.TextBox txtStok;
-        private System.Windows.Forms.TextBox txtGambar;
         private System.Windows.Forms.Button btnSimpan;
         private System.Windows.Forms.Button btnBatal;
 
@@ -21,44 +19,122 @@
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.txtNama = new System.Windows.Forms.TextBox();
-            this.txtDeskripsi = new System.Windows.Forms.TextBox();
-            this.txtKategori = new System.Windows.Forms.TextBox();
-            this.txtHarga = new System.Windows.Forms.TextBox();
-            this.txtStok = new System.Windows.Forms.TextBox();
-            this.txtGambar = new System.Windows.Forms.TextBox();
-            this.btnSimpan = new System.Windows.Forms.Button();
-            this.btnBatal = new System.Windows.Forms.Button();
-
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "V_ProdukForm";
-            this.Text = "Form Produk - Suwar-Suwir";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-
-            this.lblTitle.AutoSize = true; this.lblTitle.Location = new System.Drawing.Point(760, 80); this.lblTitle.Text = "Form Produk";
-
-            // Inputs layout
-            this.txtNama.Location = new System.Drawing.Point(700, 160); this.txtNama.Size = new System.Drawing.Size(520, 26); this.txtNama.PlaceholderText = "Nama Produk";
-            this.txtDeskripsi.Location = new System.Drawing.Point(700, 200); this.txtDeskripsi.Size = new System.Drawing.Size(520, 120); this.txtDeskripsi.Multiline = true;
-            this.txtKategori.Location = new System.Drawing.Point(700, 330); this.txtKategori.Size = new System.Drawing.Size(300, 26);
-            this.txtHarga.Location = new System.Drawing.Point(700, 370); this.txtHarga.Size = new System.Drawing.Size(200, 26);
-            this.txtStok.Location = new System.Drawing.Point(700, 410); this.txtStok.Size = new System.Drawing.Size(120, 26);
-            this.txtGambar.Location = new System.Drawing.Point(700, 450); this.txtGambar.Size = new System.Drawing.Size(520, 26);
-
-            this.btnSimpan.Location = new System.Drawing.Point(700, 500); this.btnSimpan.Size = new System.Drawing.Size(150, 40); this.btnSimpan.Text = "Simpan"; this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
-            this.btnBatal.Location = new System.Drawing.Point(870, 500); this.btnBatal.Size = new System.Drawing.Size(150, 40); this.btnBatal.Text = "Batal"; this.btnBatal.Click += new System.EventHandler(this.btnBatal_Click);
-
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.txtNama);
-            this.Controls.Add(this.txtDeskripsi);
-            this.Controls.Add(this.txtKategori);
-            this.Controls.Add(this.txtHarga);
-            this.Controls.Add(this.txtStok);
-            this.Controls.Add(this.txtGambar);
-            this.Controls.Add(this.btnSimpan);
-            this.Controls.Add(this.btnBatal);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_ProdukForm));
+            txtNama = new TextBox();
+            txtDeskripsi = new TextBox();
+            txtKategori = new TextBox();
+            txtHarga = new TextBox();
+            txtStok = new TextBox();
+            btnSimpan = new Button();
+            btnBatal = new Button();
+            openFileDialog1 = new OpenFileDialog();
+            openFileDialog2 = new OpenFileDialog();
+            openFileDialog3 = new OpenFileDialog();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // txtNama
+            // 
+            txtNama.Location = new Point(554, 337);
+            txtNama.Multiline = true;
+            txtNama.Name = "txtNama";
+            txtNama.Size = new Size(527, 44);
+            txtNama.TabIndex = 1;
+            // 
+            // txtDeskripsi
+            // 
+            txtDeskripsi.Location = new Point(554, 408);
+            txtDeskripsi.Multiline = true;
+            txtDeskripsi.Name = "txtDeskripsi";
+            txtDeskripsi.Size = new Size(527, 264);
+            txtDeskripsi.TabIndex = 2;
+            // 
+            // txtKategori
+            // 
+            txtKategori.Location = new Point(554, 697);
+            txtKategori.Multiline = true;
+            txtKategori.Name = "txtKategori";
+            txtKategori.Size = new Size(527, 44);
+            txtKategori.TabIndex = 3;
+            // 
+            // txtHarga
+            // 
+            txtHarga.Location = new Point(554, 795);
+            txtHarga.Multiline = true;
+            txtHarga.Name = "txtHarga";
+            txtHarga.Size = new Size(527, 44);
+            txtHarga.TabIndex = 4;
+            // 
+            // txtStok
+            // 
+            txtStok.Location = new Point(554, 886);
+            txtStok.Multiline = true;
+            txtStok.Name = "txtStok";
+            txtStok.Size = new Size(527, 44);
+            txtStok.TabIndex = 5;
+            txtStok.TextChanged += txtStok_TextChanged;
+            // 
+            // btnSimpan
+            // 
+            btnSimpan.Location = new Point(1297, 337);
+            btnSimpan.Name = "btnSimpan";
+            btnSimpan.Size = new Size(150, 40);
+            btnSimpan.TabIndex = 7;
+            btnSimpan.Text = "Simpan";
+            btnSimpan.Click += btnSimpan_Click;
+            // 
+            // btnBatal
+            // 
+            btnBatal.Location = new Point(1297, 401);
+            btnBatal.Name = "btnBatal";
+            btnBatal.Size = new Size(150, 40);
+            btnBatal.TabIndex = 8;
+            btnBatal.Text = "Batal";
+            btnBatal.Click += btnBatal_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // openFileDialog2
+            // 
+            openFileDialog2.FileName = "openFileDialog2";
+            // 
+            // openFileDialog3
+            // 
+            openFileDialog3.FileName = "openFileDialog3";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-1, -3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1920, 1080);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 9;
+            pictureBox1.TabStop = false;
+            // 
+            // V_ProdukForm
+            // 
+            ClientSize = new Size(1902, 1033);
+            Controls.Add(txtNama);
+            Controls.Add(txtDeskripsi);
+            Controls.Add(txtKategori);
+            Controls.Add(txtHarga);
+            Controls.Add(txtStok);
+            Controls.Add(btnSimpan);
+            Controls.Add(btnBatal);
+            Controls.Add(pictureBox1);
+            Name = "V_ProdukForm";
+            Text = "Form Produk - Suwar-Suwir";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+        private OpenFileDialog openFileDialog1;
+        private OpenFileDialog openFileDialog2;
+        private OpenFileDialog openFileDialog3;
+        private PictureBox pictureBox1;
     }
 }

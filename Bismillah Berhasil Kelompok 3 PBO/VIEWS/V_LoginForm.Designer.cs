@@ -3,9 +3,6 @@
     partial class V_LoginForm
     {
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
@@ -19,77 +16,96 @@
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.btnRegister = new System.Windows.Forms.Button();
-
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_LoginForm));
+            txtUsername = new TextBox();
+            txtPassword = new TextBox();
+            btnLogin = new Button();
+            btnRegister = new Button();
+            imageList1 = new ImageList(components);
+            imageList2 = new ImageList(components);
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // txtUsername
+            // 
+            txtUsername.BackColor = Color.White;
+            txtUsername.Font = new Font("Cambria", 26F);
+            txtUsername.Location = new Point(664, 448);
+            txtUsername.Multiline = true;
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(593, 61);
+            txtUsername.TabIndex = 3;
+            // 
+            // txtPassword
+            // 
+            txtPassword.Font = new Font("Cambria", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPassword.Location = new Point(664, 561);
+            txtPassword.Multiline = true;
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(593, 59);
+            txtPassword.TabIndex = 4;
+            txtPassword.UseSystemPasswordChar = true;
+            // 
+            // btnLogin
+            // 
+            btnLogin.Font = new Font("Cambria", 14F);
+            btnLogin.Location = new Point(873, 650);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(163, 38);
+            btnLogin.TabIndex = 5;
+            btnLogin.Text = "Login";
+            btnLogin.Click += btnLogin_Click;
+            // 
+            // btnRegister
+            // 
+            btnRegister.Font = new Font("Cambria", 14F);
+            btnRegister.Location = new Point(873, 772);
+            btnRegister.Name = "btnRegister";
+            btnRegister.Size = new Size(163, 38);
+            btnRegister.TabIndex = 6;
+            btnRegister.Text = "Register";
+            btnRegister.Click += btnRegister_Click;
+            // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageSize = new Size(16, 16);
+            imageList1.TransparentColor = Color.Transparent;
+            // 
+            // imageList2
+            // 
+            imageList2.ColorDepth = ColorDepth.Depth32Bit;
+            imageList2.ImageSize = new Size(16, 16);
+            imageList2.TransparentColor = Color.Transparent;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1920, 1080);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
             // 
             // V_LoginForm
             // 
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "V_LoginForm";
-            this.Text = "Login - Sistem Manajemen Produksi dan Transaksi Suwar-Suwir";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-
-            // lblTitle
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(860, 120);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(220, 20);
-            this.lblTitle.Text = "Form Login Sistem Suwar-Suwir";
-
-            // lblUsername
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(700, 220);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(70, 13);
-            this.lblUsername.Text = "Username";
-
-            // txtUsername
-            this.txtUsername.Location = new System.Drawing.Point(800, 215);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(320, 26);
-
-            // lblPassword
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(700, 270);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(70, 13);
-            this.lblPassword.Text = "Password";
-
-            // txtPassword
-            this.txtPassword.Location = new System.Drawing.Point(800, 265);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(320, 26);
-            this.txtPassword.UseSystemPasswordChar = true;
-
-            // btnLogin
-            this.btnLogin.Location = new System.Drawing.Point(800, 320);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(150, 35);
-            this.btnLogin.Text = "Login";
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-
-            // btnRegister
-            this.btnRegister.Location = new System.Drawing.Point(970, 320);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(150, 35);
-            this.btnRegister.Text = "Register";
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-
-            // Add controls
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.btnRegister);
+            ClientSize = new Size(1902, 1033);
+            Controls.Add(txtUsername);
+            Controls.Add(txtPassword);
+            Controls.Add(btnLogin);
+            Controls.Add(btnRegister);
+            Controls.Add(pictureBox1);
+            Name = "V_LoginForm";
+            Text = "Login - Sistem Manajemen Produksi dan Transaksi Suwar-Suwir";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+        private ImageList imageList1;
+        private ImageList imageList2;
+        private PictureBox pictureBox1;
     }
 }

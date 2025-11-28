@@ -3,7 +3,6 @@
     partial class V_MainAdminForm
     {
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Button btnKelolaProduk;
         private System.Windows.Forms.Button btnKelolaCustomer;
         private System.Windows.Forms.Button btnRiwayatTransaksi;
@@ -17,52 +16,77 @@
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblWelcome = new System.Windows.Forms.Label();
-            this.btnKelolaProduk = new System.Windows.Forms.Button();
-            this.btnKelolaCustomer = new System.Windows.Forms.Button();
-            this.btnRiwayatTransaksi = new System.Windows.Forms.Button();
-            this.btnLogout = new System.Windows.Forms.Button();
-
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "V_MainAdminForm";
-            this.Text = "Admin - Suwar-Suwir";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-
-            this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Location = new System.Drawing.Point(60, 40);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(300, 20);
-
-            this.btnKelolaProduk.Location = new System.Drawing.Point(60, 120);
-            this.btnKelolaProduk.Name = "btnKelolaProduk";
-            this.btnKelolaProduk.Size = new System.Drawing.Size(220, 60);
-            this.btnKelolaProduk.Text = "Kelola Produk";
-            this.btnKelolaProduk.Click += new System.EventHandler(this.btnKelolaProduk_Click);
-
-            this.btnKelolaCustomer.Location = new System.Drawing.Point(60, 200);
-            this.btnKelolaCustomer.Name = "btnKelolaCustomer";
-            this.btnKelolaCustomer.Size = new System.Drawing.Size(220, 60);
-            this.btnKelolaCustomer.Text = "Kelola Customer";
-            this.btnKelolaCustomer.Click += new System.EventHandler(this.btnKelolaCustomer_Click);
-
-            this.btnRiwayatTransaksi.Location = new System.Drawing.Point(60, 280);
-            this.btnRiwayatTransaksi.Name = "btnRiwayatTransaksi";
-            this.btnRiwayatTransaksi.Size = new System.Drawing.Size(220, 60);
-            this.btnRiwayatTransaksi.Text = "Riwayat Transaksi";
-            this.btnRiwayatTransaksi.Click += new System.EventHandler(this.btnRiwayatTransaksi_Click);
-
-            this.btnLogout.Location = new System.Drawing.Point(60, 360);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(120, 45);
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-
-            this.Controls.Add(this.lblWelcome);
-            this.Controls.Add(this.btnKelolaProduk);
-            this.Controls.Add(this.btnKelolaCustomer);
-            this.Controls.Add(this.btnRiwayatTransaksi);
-            this.Controls.Add(this.btnLogout);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_MainAdminForm));
+            btnKelolaProduk = new Button();
+            btnKelolaCustomer = new Button();
+            btnRiwayatTransaksi = new Button();
+            btnLogout = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // btnKelolaProduk
+            // 
+            btnKelolaProduk.Location = new Point(408, 552);
+            btnKelolaProduk.Name = "btnKelolaProduk";
+            btnKelolaProduk.Size = new Size(220, 60);
+            btnKelolaProduk.TabIndex = 1;
+            btnKelolaProduk.Text = "Kelola Produk";
+            btnKelolaProduk.Click += btnKelolaProduk_Click;
+            // 
+            // btnKelolaCustomer
+            // 
+            btnKelolaCustomer.Location = new Point(850, 552);
+            btnKelolaCustomer.Name = "btnKelolaCustomer";
+            btnKelolaCustomer.Size = new Size(220, 60);
+            btnKelolaCustomer.TabIndex = 2;
+            btnKelolaCustomer.Text = "Kelola Customer";
+            btnKelolaCustomer.Click += btnKelolaCustomer_Click;
+            // 
+            // btnRiwayatTransaksi
+            // 
+            btnRiwayatTransaksi.Location = new Point(1282, 552);
+            btnRiwayatTransaksi.Name = "btnRiwayatTransaksi";
+            btnRiwayatTransaksi.Size = new Size(220, 60);
+            btnRiwayatTransaksi.TabIndex = 3;
+            btnRiwayatTransaksi.Text = "Riwayat Transaksi";
+            btnRiwayatTransaksi.Click += btnRiwayatTransaksi_Click;
+            // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(1788, 12);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(120, 45);
+            btnLogout.TabIndex = 4;
+            btnLogout.Text = "Logout";
+            btnLogout.Click += btnLogout_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1920, 1080);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click_1;
+            // 
+            // V_MainAdminForm
+            // 
+            ClientSize = new Size(1902, 1033);
+            Controls.Add(btnKelolaProduk);
+            Controls.Add(btnKelolaCustomer);
+            Controls.Add(btnRiwayatTransaksi);
+            Controls.Add(btnLogout);
+            Controls.Add(pictureBox1);
+            Name = "V_MainAdminForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Admin - Suwar-Suwir";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+        private PictureBox pictureBox1;
     }
 }

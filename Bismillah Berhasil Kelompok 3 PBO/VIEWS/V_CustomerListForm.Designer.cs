@@ -14,26 +14,72 @@
 
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.dgvCustomers = new System.Windows.Forms.DataGridView();
-            this.btnRefresh = new System.Windows.Forms.Button();
-
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "V_CustomerListForm";
-            this.Text = "Daftar Customer - Suwar-Suwir";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-
-            this.dgvCustomers.Location = new System.Drawing.Point(300, 100);
-            this.dgvCustomers.Size = new System.Drawing.Size(1200, 700);
-            this.dgvCustomers.ReadOnly = true;
-
-            this.btnRefresh.Location = new System.Drawing.Point(60, 120);
-            this.btnRefresh.Size = new System.Drawing.Size(140, 40);
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-
-            this.Controls.Add(this.dgvCustomers);
-            this.Controls.Add(this.btnRefresh);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_CustomerListForm));
+            dgvCustomers = new DataGridView();
+            btnRefresh = new Button();
+            pictureBox1 = new PictureBox();
+            button1 = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvCustomers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvCustomers
+            // 
+            dgvCustomers.BackgroundColor = Color.White;
+            dgvCustomers.ColumnHeadersHeight = 29;
+            dgvCustomers.GridColor = Color.Black;
+            dgvCustomers.Location = new Point(207, 210);
+            dgvCustomers.Name = "dgvCustomers";
+            dgvCustomers.ReadOnly = true;
+            dgvCustomers.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvCustomers.RowHeadersWidth = 51;
+            dgvCustomers.Size = new Size(1566, 767);
+            dgvCustomers.TabIndex = 0;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(32, 210);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(140, 40);
+            btnRefresh.TabIndex = 1;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.Click += btnRefresh_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-1, -1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1920, 1080);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(32, 271);
+            button1.Name = "button1";
+            button1.Size = new Size(140, 40);
+            button1.TabIndex = 3;
+            button1.Text = "Kembali";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // V_CustomerListForm
+            // 
+            ClientSize = new Size(1902, 1033);
+            Controls.Add(button1);
+            Controls.Add(dgvCustomers);
+            Controls.Add(btnRefresh);
+            Controls.Add(pictureBox1);
+            Name = "V_CustomerListForm";
+            Text = "Daftar Customer - Suwar-Suwir";
+            ((System.ComponentModel.ISupportInitialize)dgvCustomers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
+        private PictureBox pictureBox1;
+        private Button button1;
     }
 }
