@@ -95,7 +95,7 @@
             btnDaftar.Name = "btnDaftar";
             btnDaftar.Size = new Size(128, 40);
             btnDaftar.TabIndex = 13;
-            btnDaftar.Text = "Daftar";
+            btnDaftar.Text = "Register";
             btnDaftar.Click += btnDaftar_Click;
             // 
             // button1

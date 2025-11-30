@@ -9,6 +9,10 @@
         private System.Windows.Forms.Button btnHapus;
         private System.Windows.Forms.Button btnAturStok;
         private System.Windows.Forms.Button btnBeli;
+        private System.Windows.Forms.Button btnPulihkan;
+        private System.Windows.Forms.Button btnPulihkanProduk;
+
+
 
         protected override void Dispose(bool disposing)
         {
@@ -18,6 +22,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(V_ProdukListForm));
             dgvProduk = new DataGridView();
             btnTambah = new Button();
             btnEdit = new Button();
@@ -25,13 +30,18 @@
             btnAturStok = new Button();
             btnBeli = new Button();
             button1 = new Button();
+            pictureBox1 = new PictureBox();
+            btnPulihkan = new Button();
+            btnPulihkanProduk = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvProduk).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dgvProduk
             // 
+            dgvProduk.BackgroundColor = SystemColors.Control;
             dgvProduk.ColumnHeadersHeight = 29;
-            dgvProduk.Location = new Point(300, 100);
+            dgvProduk.Location = new Point(348, 321);
             dgvProduk.Name = "dgvProduk";
             dgvProduk.ReadOnly = true;
             dgvProduk.RowHeadersWidth = 51;
@@ -42,7 +52,7 @@
             // 
             // btnTambah
             // 
-            btnTambah.Location = new Point(60, 120);
+            btnTambah.Location = new Point(348, 259);
             btnTambah.Name = "btnTambah";
             btnTambah.Size = new Size(200, 45);
             btnTambah.TabIndex = 1;
@@ -51,7 +61,7 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(60, 180);
+            btnEdit.Location = new Point(591, 259);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(200, 45);
             btnEdit.TabIndex = 2;
@@ -60,7 +70,7 @@
             // 
             // btnHapus
             // 
-            btnHapus.Location = new Point(60, 240);
+            btnHapus.Location = new Point(844, 259);
             btnHapus.Name = "btnHapus";
             btnHapus.Size = new Size(200, 45);
             btnHapus.TabIndex = 3;
@@ -69,7 +79,7 @@
             // 
             // btnAturStok
             // 
-            btnAturStok.Location = new Point(60, 300);
+            btnAturStok.Location = new Point(1103, 259);
             btnAturStok.Name = "btnAturStok";
             btnAturStok.Size = new Size(200, 45);
             btnAturStok.TabIndex = 4;
@@ -78,7 +88,7 @@
             // 
             // btnBeli
             // 
-            btnBeli.Location = new Point(60, 360);
+            btnBeli.Location = new Point(133, 321);
             btnBeli.Name = "btnBeli";
             btnBeli.Size = new Size(200, 45);
             btnBeli.TabIndex = 5;
@@ -87,7 +97,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(60, 425);
+            button1.Location = new Point(1669, 33);
             button1.Name = "button1";
             button1.Size = new Size(200, 43);
             button1.TabIndex = 6;
@@ -95,9 +105,41 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(-1, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1920, 1080);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
+            // 
+            // btnPulihkan
+            // 
+            btnPulihkan.Location = new Point(1348, 259);
+            btnPulihkan.Name = "btnPulihkan";
+            btnPulihkan.Size = new Size(200, 45);
+            btnPulihkan.TabIndex = 8;
+            btnPulihkan.Text = "Lihat Produk Terhapus";
+            btnPulihkan.Click += btnPulihkan_Click;
+            // 
+            // btnPulihkanProduk
+            // 
+            btnPulihkanProduk.Location = new Point(1571, 321);
+            btnPulihkanProduk.Name = "btnPulihkanProduk";
+            btnPulihkanProduk.Size = new Size(200, 45);
+            btnPulihkanProduk.TabIndex = 9;
+            btnPulihkanProduk.Text = "Pulihkan Produk";
+            btnPulihkanProduk.Visible = false;
+            btnPulihkanProduk.Click += btnPulihkanProduk_Click;
+            // 
             // V_ProdukListForm
             // 
             ClientSize = new Size(1902, 1033);
+            Controls.Add(btnPulihkanProduk);
+            Controls.Add(btnPulihkan);
             Controls.Add(button1);
             Controls.Add(dgvProduk);
             Controls.Add(btnTambah);
@@ -105,11 +147,17 @@
             Controls.Add(btnHapus);
             Controls.Add(btnAturStok);
             Controls.Add(btnBeli);
+            Controls.Add(pictureBox1);
             Name = "V_ProdukListForm";
             Text = "Daftar Produk - Suwar-Suwir";
+            Load += V_ProdukListForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvProduk).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
+
         }
         private Button button1;
+        private PictureBox pictureBox1;
     }
 }

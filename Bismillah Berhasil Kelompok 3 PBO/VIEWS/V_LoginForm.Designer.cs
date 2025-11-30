@@ -7,6 +7,9 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegister;
+        private Button btnTogglePassword;
+        private bool passwordVisible = false;
+
 
         protected override void Dispose(bool disposing)
         {
@@ -25,6 +28,7 @@
             imageList1 = new ImageList(components);
             imageList2 = new ImageList(components);
             pictureBox1 = new PictureBox();
+            btnTogglePassword = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -46,7 +50,6 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(593, 59);
             txtPassword.TabIndex = 4;
-            txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
@@ -90,6 +93,16 @@
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
+            // btnTogglePassword
+            // 
+            btnTogglePassword.Font = new Font("Segoe UI", 10F);
+            btnTogglePassword.Location = new Point(1265, 561);
+            btnTogglePassword.Name = "btnTogglePassword";
+            btnTogglePassword.Size = new Size(88, 59);
+            btnTogglePassword.TabIndex = 8;
+            btnTogglePassword.Text = "Show";
+            btnTogglePassword.Click += btnTogglePassword_Click;
+            // 
             // V_LoginForm
             // 
             ClientSize = new Size(1902, 1033);
@@ -97,12 +110,14 @@
             Controls.Add(txtPassword);
             Controls.Add(btnLogin);
             Controls.Add(btnRegister);
+            Controls.Add(btnTogglePassword);
             Controls.Add(pictureBox1);
             Name = "V_LoginForm";
             Text = "Login - Sistem Manajemen Produksi dan Transaksi Suwar-Suwir";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
+
         }
         private ImageList imageList1;
         private ImageList imageList2;

@@ -22,5 +22,9 @@ namespace SuwarSuwirApp.Models
 
         [Column("subtotal")]
         public decimal Subtotal { get; set; }
+
+        [ForeignKey("IdTransaksi")]
+        public M_Transaksi Transaksi { get; set; }
+
     }
 }

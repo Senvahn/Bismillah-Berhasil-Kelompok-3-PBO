@@ -71,10 +71,14 @@ namespace SuwarSuwirApp.Controllers
             {
                 using var db = dbFactory.CreateDbContext();
                 var produk = db.Produks.SingleOrDefault(p => p.IdProduk == id);
-                if (produk == null) return OperationResult<bool>.Fail("Produk tidak ditemukan.");
-                db.Produks.Remove(produk);
+                if (produk == null)
+                    return OperationResult<bool>.Fail("Produk tidak ditemukan.");
+
+                produk.IsDeleted = true;
+                produk.TanggalDiubah = DateTime.UtcNow;
+
                 db.SaveChanges();
-                return new OperationResult<bool> { Success = true, Message = "Produk dihapus.", Data = true };
+                return new OperationResult<bool> { Success = true, Message = "Produk berhasil dihapus (soft delete).", Data = true };
             }
             catch (Exception ex)
             {
@@ -82,12 +86,17 @@ namespace SuwarSuwirApp.Controllers
             }
         }
 
+
         public OperationResult<List<M_Produk>> ShowProdukList()
         {
             try
             {
                 using var db = dbFactory.CreateDbContext();
-                var list = db.Produks.OrderBy(p => p.NamaProduk).ToList();
+                var list = db.Produks
+                    .Where(p => !p.IsDeleted)
+                    .OrderBy(p => p.NamaProduk)
+                    .ToList();
+
                 return OperationResult<List<M_Produk>>.SuccessResult(list);
             }
             catch (Exception ex)
@@ -95,6 +104,7 @@ namespace SuwarSuwirApp.Controllers
                 return OperationResult<List<M_Produk>>.Fail($"Gagal ambil daftar produk: {ex.Message}");
             }
         }
+
 
         // Tambah stok (thread-safe via DB transaction FOR UPDATE)
         public OperationResult<M_Produk> TambahStok(int idProduk, int jumlah)
@@ -143,5 +153,47 @@ namespace SuwarSuwirApp.Controllers
                 return OperationResult<M_Produk>.Fail($"Gagal kurangi stok: {ex.Message}");
             }
         }
+
+        public OperationResult<bool> Restore(int id)
+        {
+            try
+            {
+                using var db = dbFactory.CreateDbContext();
+                var produk = db.Produks.SingleOrDefault(p => p.IdProduk == id);
+
+                if (produk == null)
+                    return OperationResult<bool>.Fail("Produk tidak ditemukan.");
+
+                produk.IsDeleted = false;
+                produk.TanggalDiubah = DateTime.UtcNow;
+                db.SaveChanges();
+
+                return new OperationResult<bool> { Success = true, Message = "Produk berhasil dipulihkan.", Data = true };
+            }
+            catch (Exception ex)
+            {
+                return OperationResult<bool>.Fail($"Gagal pulihkan produk: {ex.Message}");
+            }
+        }
+
+        public OperationResult<List<M_Produk>> GetDeletedProduk()
+        {
+            try
+            {
+                using var db = dbFactory.CreateDbContext();
+                var deletedList = db.Produks
+                    .Where(p => p.IsDeleted == true)
+                    .OrderBy(p => p.NamaProduk)
+                    .ToList();
+
+                return OperationResult<List<M_Produk>>.SuccessResult(deletedList);
+            }
+            catch (Exception ex)
+            {
+                return OperationResult<List<M_Produk>>.Fail($"Gagal mengambil produk terhapus: {ex.Message}");
+            }
+        }
+
+
     }
 }

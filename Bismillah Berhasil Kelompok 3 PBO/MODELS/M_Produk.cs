@@ -31,5 +31,9 @@ namespace SuwarSuwirApp.Models
 
         [Column("tanggal_diubah")]
         public DateTime TanggalDiubah { get; set; }
+
+        [Column("is_deleted")]
+        public bool IsDeleted { get; set; } = false;
+
     }
 }

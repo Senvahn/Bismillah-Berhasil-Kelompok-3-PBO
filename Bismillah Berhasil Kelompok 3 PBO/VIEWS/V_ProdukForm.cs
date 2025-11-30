@@ -24,7 +24,6 @@ namespace SuwarSuwirApp.Views
             txtDeskripsi.Text = editingProduk.Deskripsi;
             txtKategori.Text = editingProduk.Kategori;
             txtHarga.Text = editingProduk.Harga.ToString();
-            txtStok.Text = editingProduk.Stok.ToString();
         }
 
         private void btnSimpan_Click(object sender, EventArgs e)
@@ -32,7 +31,6 @@ namespace SuwarSuwirApp.Views
             // Validasi input sederhana
             if (string.IsNullOrWhiteSpace(txtNama.Text)) { MessageBox.Show("Nama produk harus diisi."); return; }
             if (!decimal.TryParse(txtHarga.Text, out decimal harga)) { MessageBox.Show("Harga tidak valid."); return; }
-            if (!int.TryParse(txtStok.Text, out int stok)) { MessageBox.Show("Stok tidak valid."); return; }
 
             if (editingProduk == null)
             {
@@ -42,7 +40,6 @@ namespace SuwarSuwirApp.Views
                     Deskripsi = txtDeskripsi.Text.Trim(),
                     Kategori = txtKategori.Text.Trim(),
                     Harga = harga,
-                    Stok = stok,
                 };
                 var res = produkController.Create(p);
                 MessageBox.Show(res.Message);
@@ -54,7 +51,6 @@ namespace SuwarSuwirApp.Views
                 editingProduk.Deskripsi = txtDeskripsi.Text.Trim();
                 editingProduk.Kategori = txtKategori.Text.Trim();
                 editingProduk.Harga = harga;
-                editingProduk.Stok = stok;
                 var res = produkController.Update(editingProduk);
                 MessageBox.Show(res.Message);
                 if (res.Success) this.Close();

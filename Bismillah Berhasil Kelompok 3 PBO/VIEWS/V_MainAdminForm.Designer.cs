@@ -31,7 +31,7 @@
             btnKelolaProduk.Name = "btnKelolaProduk";
             btnKelolaProduk.Size = new Size(220, 60);
             btnKelolaProduk.TabIndex = 1;
-            btnKelolaProduk.Text = "Kelola Produk";
+            btnKelolaProduk.Text = "Menu Produk";
             btnKelolaProduk.Click += btnKelolaProduk_Click;
             // 
             // btnKelolaCustomer

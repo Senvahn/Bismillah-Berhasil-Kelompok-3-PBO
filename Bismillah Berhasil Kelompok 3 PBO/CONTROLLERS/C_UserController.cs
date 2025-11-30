@@ -109,7 +109,23 @@ namespace SuwarSuwirApp.Controllers
             try
             {
                 using var db = dbFactory.CreateDbContext();
-                var list = db.Users.Where(u => u.Role == "customer").ToList();
+
+                var list = db.Users
+                    .Where(u => u.Role == "customer")
+                    .Select(u => new M_User
+                    {
+                        IdUser = u.IdUser,
+                        NamaLengkap = u.NamaLengkap,
+                        Username = u.Username,
+                        Email = u.Email,
+                        NoHp = u.NoHp,
+                        Alamat = u.Alamat,
+                        Role = u.Role,
+                        TanggalDaftar = u.TanggalDaftar,
+                        TotalTransaksi = db.Transaksis.Count(t => t.IdUser == u.IdUser)
+                    })
+                    .ToList();
+
                 return OperationResult<List<M_User>>.SuccessResult(list);
             }
             catch (Exception ex)
@@ -117,5 +133,6 @@ namespace SuwarSuwirApp.Controllers
                 return OperationResult<List<M_User>>.Fail($"Gagal ambil daftar customer: {ex.Message}");
             }
         }
+
     }
 }

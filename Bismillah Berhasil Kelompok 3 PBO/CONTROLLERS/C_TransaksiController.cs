@@ -20,9 +20,10 @@ namespace SuwarSuwirApp.Controllers
                 {
                     IdUser = idUser,
                     TanggalTransaksi = DateTime.UtcNow,
-                    MetodePembayaran = null,
-                    StatusPemesanan = "Pending",
+                    MetodePembayaran = "",
+                    StatusPemesanan = "Menunggu Konfirmasi",
                     TotalHarga = 0m,
+                    NomorNota = "TRX" + DateTime.UtcNow.ToString("yyyyMMddHHmmss"),
                     DetailTransaksis = new List<M_DetailTransaksi>()
                 };
 
@@ -51,7 +52,10 @@ namespace SuwarSuwirApp.Controllers
             }
             catch (Exception ex)
             {
-                return OperationResult<M_Transaksi>.Fail($"Gagal buat pemesanan: {ex.Message}");
+                // Ambil inner exception kalau ada supaya pesan SQL muncul lengkap
+                var inner = ex.InnerException?.Message ?? ex.Message;
+                var full = ex.ToString(); // stack trace + inner exception
+                return OperationResult<M_Transaksi>.Fail($"Gagal buat pemesanan: {inner}\n\nDetails:\n{full}");
             }
         }
 
@@ -108,7 +112,7 @@ namespace SuwarSuwirApp.Controllers
 
                 // Jika semua berhasil, update transaksi
                 transaksi.MetodePembayaran = metodePembayaran;
-                transaksi.StatusPemesanan = "Lunas";
+                transaksi.StatusPemesanan = "Menunggu Konfirmasi";
                 transaksi.TanggalTransaksi = DateTime.UtcNow;
                 // Hitung ulang total (safety)
                 transaksi.TotalHarga = transaksi.DetailTransaksis.Sum(d => d.Subtotal);
@@ -166,5 +170,57 @@ namespace SuwarSuwirApp.Controllers
                 return OperationResult<M_Transaksi>.Fail($"Gagal update status: {ex.Message}");
             }
         }
+
+        public OperationResult<M_Transaksi> KonfirmasiPembayaran(int idTransaksi)
+        {
+            try
+            {
+                using var db = dbFactory.CreateDbContext();
+                var transaksi = db.Transaksis.SingleOrDefault(t => t.IdTransaksi == idTransaksi);
+                if (transaksi == null) return OperationResult<M_Transaksi>.Fail("Transaksi tidak ditemukan.");
+
+                if (transaksi.StatusPemesanan == "Lunas")
+                    return OperationResult<M_Transaksi>.Fail("Transaksi sudah Lunas.");
+
+                transaksi.StatusPemesanan = "Lunas";
+                db.SaveChanges();
+
+                return OperationResult<M_Transaksi>.SuccessResult(transaksi, "Pembayaran berhasil dikonfirmasi.");
+            }
+            catch (Exception ex)
+            {
+                return OperationResult<M_Transaksi>.Fail($"Gagal konfirmasi: {ex.Message}");
+            }
+        }
+
+        public OperationResult<List<(string NamaProduk, int Jumlah, decimal HargaSatuan, decimal Subtotal)>> GetDetailTransaksi(int idTransaksi)
+        {
+            try
+            {
+                using var db = dbFactory.CreateDbContext();
+                var details = (from d in db.DetailTransaksis
+                               join p in db.Produks on d.IdProduk equals p.IdProduk
+                               where d.IdTransaksi == idTransaksi
+                               select new
+                               {
+                                   p.NamaProduk,
+                                   d.Jumlah,
+                                   HargaSatuan = p.Harga,
+                                   d.Subtotal
+                               }).ToList();
+
+                if (!details.Any())
+                    return OperationResult<List<(string, int, decimal, decimal)>>.Fail("Tidak ada detail transaksi.");
+
+                var result = details.Select(d => (d.NamaProduk, d.Jumlah, d.HargaSatuan, d.Subtotal)).ToList();
+
+                return OperationResult<List<(string, int, decimal, decimal)>>.SuccessResult(result);
+            }
+            catch (Exception ex)
+            {
+                return OperationResult<List<(string, int, decimal, decimal)>>.Fail($"Gagal ambil detail: {ex.Message}");
+            }
+        }
+
     }
 }

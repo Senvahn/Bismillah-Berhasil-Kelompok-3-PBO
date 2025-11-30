@@ -7,7 +7,6 @@
         private System.Windows.Forms.TextBox txtDeskripsi;
         private System.Windows.Forms.TextBox txtKategori;
         private System.Windows.Forms.TextBox txtHarga;
-        private System.Windows.Forms.TextBox txtStok;
         private System.Windows.Forms.Button btnSimpan;
         private System.Windows.Forms.Button btnBatal;
 
@@ -24,7 +23,6 @@
             txtDeskripsi = new TextBox();
             txtKategori = new TextBox();
             txtHarga = new TextBox();
-            txtStok = new TextBox();
             btnSimpan = new Button();
             btnBatal = new Button();
             openFileDialog1 = new OpenFileDialog();
@@ -66,15 +64,6 @@
             txtHarga.Size = new Size(527, 44);
             txtHarga.TabIndex = 4;
             // 
-            // txtStok
-            // 
-            txtStok.Location = new Point(554, 886);
-            txtStok.Multiline = true;
-            txtStok.Name = "txtStok";
-            txtStok.Size = new Size(527, 44);
-            txtStok.TabIndex = 5;
-            txtStok.TextChanged += txtStok_TextChanged;
-            // 
             // btnSimpan
             // 
             btnSimpan.Location = new Point(1297, 337);
@@ -108,7 +97,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(-1, -3);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1920, 1080);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -122,7 +111,6 @@
             Controls.Add(txtDeskripsi);
             Controls.Add(txtKategori);
             Controls.Add(txtHarga);
-            Controls.Add(txtStok);
             Controls.Add(btnSimpan);
             Controls.Add(btnBatal);
             Controls.Add(pictureBox1);

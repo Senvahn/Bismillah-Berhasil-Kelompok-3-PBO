@@ -27,7 +27,9 @@ namespace SuwarSuwirApp.Models
         [Column("total_harga")]
         public decimal TotalHarga { get; set; }
 
-        // Navigational property (optional)
         public List<M_DetailTransaksi> DetailTransaksis { get; set; }
+
+        [Column("nomor_nota")]
+        public string? NomorNota { get; set; }
     }
 }

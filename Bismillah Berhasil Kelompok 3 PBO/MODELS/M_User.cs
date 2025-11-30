@@ -40,6 +40,10 @@ namespace SuwarSuwirApp.Models
         [Column("tanggal_daftar")]
         public DateTime TanggalDaftar { get; set; }
 
+        [Column("total_transaksi")]
+        public int TotalTransaksi { get; set; }
+
+
         // Methods - logic akses DB ada di controller, namun helper statis boleh ada:
         public static OperationResult<M_User> ValidateLogin(string username, string password, M_DbContextFactory factory)
         {

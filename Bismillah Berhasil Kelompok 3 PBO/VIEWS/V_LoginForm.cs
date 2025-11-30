@@ -12,14 +12,26 @@ namespace SuwarSuwirApp.Views
         public V_LoginForm(M_DbContextFactory factory)
         {
             InitializeComponent();
+            // pastikan kontrol sudah dibuat dulu sebelum diakses
+            txtPassword.UseSystemPasswordChar = true;
+            txtPassword.Multiline = false;
+
             userController = new C_UserController(factory);
             userController.SetView(this);
         }
 
+
         public V_LoginForm(C_UserController userController)
         {
+            InitializeComponent();
+            // pastikan kontrol sudah dibuat dulu sebelum diakses
+            txtPassword.UseSystemPasswordChar = true;
+            txtPassword.Multiline = false;
+
             this.userController = userController;
         }
+
+
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -78,6 +90,21 @@ namespace SuwarSuwirApp.Views
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTogglePassword_Click(object sender, EventArgs e)
+        {
+            passwordVisible = !passwordVisible;
+            txtPassword.UseSystemPasswordChar = !passwordVisible;
+
+            if (passwordVisible)
+            {
+                btnTogglePassword.Text = "Hide";
+            }
+            else
+            {
+                btnTogglePassword.Text = "Show";
+            }
         }
     }
 }

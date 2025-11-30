@@ -20,9 +20,23 @@ namespace SuwarSuwirApp.Views
         private void LoadCustomers()
         {
             var res = userController.GetAllCustomers();
-            if (!res.Success) { MessageBox.Show(res.Message); return; }
+            if (!res.Success)
+            {
+                MessageBox.Show(res.Message);
+                return;
+            }
+
             dgvCustomers.DataSource = res.Data;
+
+            // Sembunyikan kolom password
+            if (dgvCustomers.Columns["Password"] != null)
+                dgvCustomers.Columns["Password"].Visible = false;
+
+            // Ubah header kolom TotalTransaksi
+            if (dgvCustomers.Columns["TotalTransaksi"] != null)
+                dgvCustomers.Columns["TotalTransaksi"].HeaderText = "Jumlah Transaksi";
         }
+
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {

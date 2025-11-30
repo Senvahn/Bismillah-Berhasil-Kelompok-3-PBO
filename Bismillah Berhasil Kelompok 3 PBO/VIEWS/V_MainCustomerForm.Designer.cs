@@ -39,7 +39,7 @@
             btnLihatProduk.Name = "btnLihatProduk";
             btnLihatProduk.Size = new Size(220, 60);
             btnLihatProduk.TabIndex = 1;
-            btnLihatProduk.Text = "Lihat Produk";
+            btnLihatProduk.Text = "Menu Produk";
             btnLihatProduk.Click += btnLihatProduk_Click;
             // 
             // btnLihatTransaksi

@@ -49,9 +49,10 @@ namespace SuwarSuwirApp.Views
                 return;
             }
 
-            daftarProduk = res.Data ?? new List<M_Produk>();
+            daftarProduk = (res.Data ?? new List<M_Produk>()).OrderBy(p => p.IdProduk).ToList();
             dgvProduk.DataSource = null;
             dgvProduk.DataSource = daftarProduk;
+
 
             // tampilkan kolom penting (opsional: sesuaikan nama property modelmu)
             // contoh: dgvProduk.Columns["IdProduk"].Visible = false; kalau mau sembunyikan id
@@ -138,7 +139,7 @@ namespace SuwarSuwirApp.Views
         private void UpdateTotalLabel()
         {
             totalHarga = keranjang.Sum(k => k.Subtotal);
-            lblTotal.Text = $"Total: {totalHarga:C2}";
+            lblTotal.Text = $"Total: Rp {totalHarga:N0}";
         }
 
         // Bind kosong saat form baru
@@ -179,15 +180,20 @@ namespace SuwarSuwirApp.Views
                 return;
             }
 
-            var bayarRes = transaksiController.Bayar(pemesanan.Data.IdTransaksi, "Cash");
+            string metode = cbMetode.SelectedItem?.ToString() ?? "Cash";
+
+            var bayarRes = transaksiController.Bayar(pemesanan.Data.IdTransaksi, metode);
+
             if (!bayarRes.Success)
             {
                 MessageBox.Show(bayarRes.Message);
                 return;
             }
 
+
+
             decimal kembalian = uangBayar - totalHarga;
-            MessageBox.Show($"Pembayaran berhasil.\nKembalian: {kembalian:C2}");
+            MessageBox.Show($"Pembayaran berhasil.\nKembalian: Rp {kembalian:N0}");
 
             // bersihkan dan tutup
             keranjang.Clear();
@@ -204,6 +210,16 @@ namespace SuwarSuwirApp.Views
             public decimal Harga { get; set; }
             public int Jumlah { get; set; }
             public decimal Subtotal { get; set; }
+        }
+
+        private void nudJumlah_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

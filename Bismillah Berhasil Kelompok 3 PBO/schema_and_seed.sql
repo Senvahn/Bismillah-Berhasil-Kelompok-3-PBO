@@ -67,7 +67,13 @@ INSERT INTO produks (nama_produk, deskripsi, kategori, harga, stok, gambar_path,
 VALUES
 ('Suwar-Suwir Original', 'Olahan tape singkong rasa original', 'Olahan', 25000.00, 50, '', NOW(), NOW()),
 ('Suwar-Suwir Manis', 'Tape singkong dengan tambahan gula merah', 'Olahan', 27000.00, 30, '', NOW(), NOW()),
-('Suwar-Suwir Pedas', 'Varian pedas khas Mutiara Rasa', 'Olahan', 28000.00, 20, '', NOW(), NOW())
+('Suwar-Suwir Pedas', 'Varian pedas khas Mutiara Rasa', 'Olahan', 28000.00, 20, '', NOW(), NOW()),
+('Suwar-Suwir Keju', 'Tape singkong dengan taburan keju', 'Olahan', 30000.00, 25, '', NOW(), NOW()),
+('Suwar-Suwir Coklat', 'Tape singkong dengan saus coklat', 'Olahan', 30000.00, 40, '', NOW(), NOW()),
+('Suwar-Suwir Durian', 'Varian eksotis dengan durian', 'Olahan', 35000.00, 15, '', NOW(), NOW()),
+('Suwar-Suwir Kacang', 'Tape singkong dengan topping kacang tanah', 'Olahan', 28000.00, 35, '', NOW(), NOW()),
+('Suwar-Suwir Keju Pedas', 'Keju + cabai, pedas gurih', 'Olahan', 31000.00, 20, '', NOW(), NOW()),
+('Suwar-Suwir Matcha', 'Rasa green tea khas Jepang', 'Olahan', 33000.00, 10, '', NOW(), NOW()),
 ON CONFLICT DO NOTHING;
 
 -- Contoh 1 transaksi (customer Budi)
